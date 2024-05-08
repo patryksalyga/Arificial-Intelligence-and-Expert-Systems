@@ -1,0 +1,5 @@
+Length of solution: 3
+Number of visited states: 28
+Number of processed states: 7
+Max recursion depth: 3
+Duration: 0.0003610000000000002
