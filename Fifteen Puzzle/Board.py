@@ -1,4 +1,5 @@
 import copy
+import math
 
 class Board:
     def __init__(self, list, last_move = '', depth=0):
@@ -61,7 +62,32 @@ class Board:
 
                 return(Board(list_copy,moves_copy,self.depth+1))
             
+    def hamm_coutning(self):
+        i = 1
+        count = 0
+        for x in range(len(self.list)):
+            for y in range(len(self.list[x])):
+                if self.list[x][y] == i:
+                    count += 1
+                i += 1
+                if i == 16:
+                    i = 0
+        return count
+    
+    def distance_sum(self):
+        i = 1
+        distance = 0
+        for x in range(len(self.list)):
+            for y in range(len(self.list[x])):
+                searched_position = self.search(i)
+                distance += math.sqrt((searched_position[0] - x)**2 + (searched_position[1] - y)**2)
 
+                i += 1
+                if i == 16:
+                    i = 0
+        return distance
+
+            
     def print_board(self):
         print("Depth: " + str(self.depth) + " ,moves: " )
         print(*self.last_move)
