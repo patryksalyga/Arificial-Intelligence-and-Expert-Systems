@@ -14,7 +14,7 @@ class Dfs:
         i = 1
         max_depth = 0
 
-        while self.queue[0].depth < 20:
+        while len(self.queue) > 0:
             self.queue[0].print_board()
 
             if self.queue[0].depth > max_depth:
@@ -28,8 +28,9 @@ class Dfs:
                 next_move = self.queue[0].next_move(o)
                 visited += 1
                 if next_move is not None:
-                    self.queue.insert(i, next_move)
-                    i += 1
+                    if self.queue[0].depth < 20:
+                        self.queue.insert(i, next_move)
+                        i += 1
                     
             i = 1      
             self.queue.pop(0)

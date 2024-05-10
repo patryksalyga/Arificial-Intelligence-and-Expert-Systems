@@ -13,7 +13,7 @@ class Bfs:
         processed = 0
         start = perf_counter()
 
-        while self.queue[0].depth < 20:
+        while len(self.queue) > 0:
             self.queue[0].print_board()
             if self.queue[0] is not None and self.queue[0].is_solved():
                 self.queue[0].last_move.pop(0)
@@ -23,7 +23,8 @@ class Bfs:
                 next_move = self.queue[0].next_move(o)
                 visited += 1
                 if next_move is not None:
-                    self.queue.append(next_move)
+                    if self.queue[0].depth < 20:
+                        self.queue.append(next_move)
                     
                     
             self.queue.pop(0)

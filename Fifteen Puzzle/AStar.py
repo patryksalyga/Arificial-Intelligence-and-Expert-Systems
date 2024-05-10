@@ -12,7 +12,7 @@ class Astr:
         processed = 0
         start = perf_counter()
 
-        while self.queue[0].depth < 20:
+        while len(self.queue) > 0:
             self.queue[0].print_board()
             if self.queue[0] is not None and self.queue[0].is_solved():
                 self.queue[0].last_move.pop(0)
@@ -28,22 +28,26 @@ class Astr:
                     possible_moves.append(next_move)
 
             count = []
+            i = 1
             if order == "hamm":
                 for move in possible_moves:
                     count.append(move.hamm_coutning())
-                pick_index = count.index(max(count))
+                
+                for r in count:
+                    if self.queue[0].depth < 20:
+                        self.queue.insert(i,possible_moves[count.index(max(count))])
+                        i += 1
             
             elif order == "mahm":
                 for move in possible_moves:
                     count.append(move.distance_sum())
 
-                pick_index = count.index(min(count))
+                for r in count:
+                    if self.queue[0].depth < 20:
+                        self.queue.insert(i, possible_moves[count.index(min(count))])
+                        i +=1
 
-            print(*count)
-                    
-            
-            self.queue.append(possible_moves[pick_index])
-
+                
             self.queue.pop(0)
             processed += 1
         # Zwraca: solution, visited, processed, max_depth, duration
