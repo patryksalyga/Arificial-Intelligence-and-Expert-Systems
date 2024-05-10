@@ -36,6 +36,7 @@ class Astr:
                 for r in count:
                     if self.queue[0].depth < 20:
                         self.queue.insert(i,possible_moves[count.index(max(count))])
+                        possible_moves.pop(count.index(max(count)))
                         i += 1
             
             elif order == "mahm":
@@ -45,6 +46,7 @@ class Astr:
                 for r in count:
                     if self.queue[0].depth < 20:
                         self.queue.insert(i, possible_moves[count.index(min(count))])
+                        possible_moves.pop(count.index(min(count)))
                         i +=1
 
                 
