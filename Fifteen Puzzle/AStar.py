@@ -33,21 +33,27 @@ class Astr:
                 for move in possible_moves:
                     count.append(move.hamm_coutning())
                 
-                for r in count:
+                count_len = len(count)
+
+                for i in range(1,count_len):
                     if self.queue[0].depth < 20:
-                        self.queue.insert(i,possible_moves[count.index(max(count))])
-                        possible_moves.pop(count.index(max(count)))
-                        i += 1
+                        max_index = count.index(max(count))
+                        self.queue.insert(i, possible_moves[max_index])
+                        possible_moves.pop(max_index)
+                        count.pop(max_index)
             
             elif order == "mahm":
                 for move in possible_moves:
                     count.append(move.distance_sum())
 
-                for r in count:
+                count_len = len(count)
+
+                for i in range(1,count_len):
                     if self.queue[0].depth < 20:
-                        self.queue.insert(i, possible_moves[count.index(min(count))])
-                        possible_moves.pop(count.index(min(count)))
-                        i +=1
+                        min_index = count.index(min(count))
+                        self.queue.insert(i, possible_moves[min_index])
+                        possible_moves.pop(min_index)
+                        count.pop(min_index)
 
                 
             self.queue.pop(0)
