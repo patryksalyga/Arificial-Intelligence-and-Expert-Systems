@@ -35,5 +35,7 @@ class Dfs:
             i = 1      
             self.queue.pop(0)
             processed += 1
+
+        return -1, visited, processed, 20, perf_counter() - start
         # Zwraca: solution, visited, processed, max_depth, duration
         pass

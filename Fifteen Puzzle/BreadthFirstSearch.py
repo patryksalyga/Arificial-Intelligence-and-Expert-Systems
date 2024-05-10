@@ -29,7 +29,9 @@ class Bfs:
                     
             self.queue.pop(0)
             processed += 1
-   
+    
+
+        return -1, visited, processed, 20, perf_counter() - start
         # Zwraca: solution, visited, processed, max_depth, duration
         # NIE WIEM GDZIE PROCESSED I VISITED
         pass
