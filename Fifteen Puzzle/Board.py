@@ -67,7 +67,7 @@ class Board:
         count = 0
         for x in range(len(self.list)):
             for y in range(len(self.list[x])):
-                if self.list[x][y] == i:
+                if self.list[x][y] != i:
                     count += 1
                 i += 1
                 if i == 16:
